@@ -15,7 +15,7 @@ export const useFetch = (url: string) => {
         const response = await axios.get(url)
         setData(response.data)
       } catch (err) {
-        setError('Failed to fetch data')
+        setError(err instanceof Error ? err.message : 'An unknown error occurred')
       } finally {
         setLoading(false)
       }
